@@ -22,7 +22,7 @@ public class zombieAI : MonoBehaviour {
 		col = GetComponent<CapsuleCollider>();
 		//anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		playerAnim = player.GetComponent<Animator> ();
+		//playerAnim = player.GetComponent<Animator> ();
 		//playerHealth = player.GetComponent<PlayerHealth>();
 
 		//personalLastSighting = lastPlayerSighting.resetPosition;
@@ -53,13 +53,14 @@ public class zombieAI : MonoBehaviour {
 				if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius)) {
 					if (hit.collider.gameObject == player) {
 						playerInSight = true;
+						Debug.Log("Hit the player");
 						//lastPlayerSighting.position = player.transform.position;
 					}
 				}
 			}
 
-			int playerLayerZeroStateHash = playerAnim.GetCurrentAnimatorStateInfo(0).fullPathHash;
-			int playerLayerOneStateHash = playerAnim.GetCurrentAnimatorStateInfo(1).fullPathHash;
+			//int playerLayerZeroStateHash = playerAnim.GetCurrentAnimatorStateInfo(0).fullPathHash;
+			//int playerLayerOneStateHash = playerAnim.GetCurrentAnimatorStateInfo(1).fullPathHash;
 			/*
 			if (playerLayerZeroStateHash == hash.locomotionState || playerLayerOneStateHash == hash.shoutState) {
 				if (CalculatePathLength(other.transform.position) <= col.radius) {
