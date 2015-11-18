@@ -12,6 +12,7 @@ public class basicZombieAI : MonoBehaviour {
 	private Transform currentDest;
 	private float distance;
 	private Animator anim;
+	private bool isWalking = false;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
@@ -23,12 +24,14 @@ public class basicZombieAI : MonoBehaviour {
 		distance = Vector3.Distance (transform.position, target.transform.position);
 		if (distance <= spottingLenght) {
 			agent.SetDestination (target.position);
-			anim.SetBool("isWalking", true);
+			isWalking = true;
+			anim.SetBool("isWalking", isWalking);
 
 		}
 		else if (distance >= lostLenght) {
 			agent.SetDestination(transform.position);
-			anim.SetBool("isWalking", false);
+			isWalking = false;
+			anim.SetBool("isWalking", isWalking);
 		}
 		//agent.SetDestination (target.position);
 	}
