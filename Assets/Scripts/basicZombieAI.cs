@@ -5,7 +5,7 @@ public class basicZombieAI : MonoBehaviour {
 
 	NavMeshAgent agent;
 
-	public Transform target;
+	private Transform target;
 	public float spottingLenght = 10;
 	public float lostLenght = 20;
 
@@ -13,7 +13,7 @@ public class basicZombieAI : MonoBehaviour {
 	private float distance;
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
-		//target = GameObject.FindWithTag ("Player").transform;
+		target = GameObject.FindWithTag ("Player").transform;
 	}
 
 	void Update () {
