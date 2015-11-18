@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class enemyFollow : MonoBehaviour {
+public class basicZombieAI : MonoBehaviour {
 
 	NavMeshAgent agent;
 

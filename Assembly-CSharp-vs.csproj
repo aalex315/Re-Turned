@@ -102,7 +102,7 @@
      <Compile Include="Assets\Assets\FirstPersonView\Scripts\Renderer\FPV_Renderer_Custom.cs" />
      <Compile Include="Assets\Assets\FirstPersonView\Scripts\Renderer\FPV_Renderer_DisableOnly.cs" />
      <Compile Include="Assets\Assets\FirstPersonView\Scripts\_Static\FPV.cs" />
-     <Compile Include="Assets\Scripts\enemyFollow.cs" />
+     <Compile Include="Assets\Scripts\basicZombieAI.cs" />
      <Compile Include="Assets\Scripts\zombieAI.cs" />
      <None Include="Assets\Assets\FirstPersonView\Example\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Assets\FirstPersonView\Example\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
