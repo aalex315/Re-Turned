@@ -5,10 +5,10 @@ public class basicZombieAI : MonoBehaviour {
 
 	NavMeshAgent agent;
 
-	private Transform target;
 	public float spottingLenght = 10;
 	public float lostLenght = 20;
 
+	private Transform target;
 	private Transform currentDest;
 	private float distance;
 	private Animator anim;

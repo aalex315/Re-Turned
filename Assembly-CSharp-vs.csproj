@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\basicZombieAI.cs" />
      <Compile Include="Assets\Scripts\zombieAI.cs" />
      <None Include="Assets\Assets\BigHeads\BigHead Starter\Shader\Outlined Diffuse.shader" />
