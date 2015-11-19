@@ -13,11 +13,13 @@ public class basicZombieAI : MonoBehaviour {
 	private float distance;
 	private Animator anim;
 	private bool isWalking = false;
+	private bool onTerrain = false;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
 		target = GameObject.FindWithTag ("Player").transform;
 		anim = GetComponent<Animator> ();
+
 	}
 
 	void Update () {

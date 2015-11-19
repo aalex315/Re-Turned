@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class SpawnEnemies : MonoBehaviour {
-
-	public int numObjects = 10;
+	
 	public float spawningRadius = 50.0f;
 	public float minSpawnRadius = 50.0f;
 	public float maxSpawnRadius = 100.0f;
@@ -13,15 +12,11 @@ public class SpawnEnemies : MonoBehaviour {
 	private Transform target;
 	private GameObject[] countZombies;
 
-	void Start(){
-	
-	}
-
 	void Update() {
 		countZombies = GameObject.FindGameObjectsWithTag ("Zombie");
 		if (countZombies.Length < zombieCount) {
 			Vector3 center = transform.position;
-			for (int i = 0; i < numObjects; i++){
+			for (int i = 0; i < zombieCount; i++){
 				Vector3 pos = RandomCircle(center, Random.Range(minSpawnRadius, maxSpawnRadius));
 				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center-pos);
 				Instantiate(prefab, pos, rot);

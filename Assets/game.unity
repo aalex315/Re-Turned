@@ -297,10 +297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adc8d41b09b77d4d9e0a041a3e841d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numObjects: 10
   spawningRadius: 30
   minSpawnRadius: 50
-  maxSpawnRadius: 300
+  maxSpawnRadius: 100
   prefab: {fileID: 190044, guid: e3d5fb5246178144684ec9363d239c9a, type: 2}
   zombieCount: 30
 --- !u!1 &1543891532
@@ -507,7 +506,7 @@ GameObject:
   - 154: {fileID: 2056224418}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
