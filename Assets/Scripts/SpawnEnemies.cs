@@ -32,8 +32,12 @@ public class SpawnEnemies : MonoBehaviour {
 			Vector3 center = transform.position;
 			for (int i = 0; i < zombieCount; i++){
 				Vector3 pos = RandomCircle(center, Random.Range(minSpawnRadius, maxSpawnRadius));
+				//Vector3 oldPos = (pos);
+				pos.y = Terrain.activeTerrain.SampleHeight(pos);
+				Debug.Log(pos);
+
 				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center-pos);
-				if (Physics.CheckSphere(new Vector3(pos.x, 1.1f, pos.z), 1) == false) {
+				if (Physics.CheckSphere(new Vector3(pos.x, pos.y + 1.1f, pos.z), 1) == false) {
 					Instantiate(prefab, pos, rot);
 				}
 			}

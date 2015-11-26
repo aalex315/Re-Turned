@@ -16,22 +16,23 @@ public class basicZombieAI : MonoBehaviour {
 	private Animator anim;
 	private bool isWalking = false;
 	PlayerStuff script1;
+	//PlayerStuff script1;
 	//private bool onTerrain = false;
+
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator> ();
-		script1 = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStuff>();
+		script1 = GetComponent<PlayerStuff> ();
 
-		/*if (agent.isOnNavMesh == false) {
-
-		}*/
-
+		//Moves to navmesh if outside of it
 		NavMeshHit closestHit;
-
 		if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas)) {
-			gameObject.transform.position = closestHit.position + new Vector3(10, 0 ,10);
+			gameObject.transform.position = closestHit.position;
+		}
+		if (agent.isOnNavMesh == false) {
+			Destroy(this);
 		}
 	}
 
@@ -50,7 +51,7 @@ public class basicZombieAI : MonoBehaviour {
 			anim.SetBool("isWalking", isWalking);
 		}
 
-		if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance) {
+		if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance && this.anim.GetCurrentAnimatorStateInfo(0).IsName("attack0") == false) {
 			agent.Stop();
 			StartCoroutine(PlayOneShot("isAttacking"));
 		}
@@ -65,7 +66,7 @@ public class basicZombieAI : MonoBehaviour {
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
 		anim.SetBool (paramName, false);
-		script1.gainDamage (damage);
+		//script1.gainDamage (damage);
 		agent.Resume();
 	}
 }
