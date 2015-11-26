@@ -7,6 +7,7 @@ public class basicZombieAI : MonoBehaviour {
 
 	public float spottingLenght = 10;
 	public float lostLenght = 20;
+	public float attackDistance = 2;
 
 	private Transform target;
 	private Transform currentDest;
@@ -41,7 +42,7 @@ public class basicZombieAI : MonoBehaviour {
 			anim.SetBool("isWalking", isWalking);
 		}
 
-		if (checkIfPlayerIsInFront() > 0.0 && distance < 2) {
+		if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance) {
 			//script1.gainDamage();
 			agent.Stop();
 			StartCoroutine(PlayOneShot("isAttacking"));
@@ -57,7 +58,7 @@ public class basicZombieAI : MonoBehaviour {
 	public IEnumerator PlayOneShot(string paramName){
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
-		agent.Resume();
 		anim.SetBool (paramName, false);
+		agent.Resume();
 	}
 }
