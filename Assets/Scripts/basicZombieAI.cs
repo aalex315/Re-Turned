@@ -28,13 +28,15 @@ public class basicZombieAI : MonoBehaviour {
 	void Update () {
 		distance = Vector3.Distance (transform.position, target.transform.position);
 		if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0) {
+			agent.Resume();
 			agent.SetDestination (target.position);
 			isWalking = true;
 			anim.SetBool("isWalking", isWalking);
 
 		}
 		else if (distance >= lostLenght) {
-			agent.SetDestination(transform.position);
+			agent.Stop();
+			//agent.SetDestination(transform.position);
 			isWalking = false;
 			anim.SetBool("isWalking", isWalking);
 		}
