@@ -13,12 +13,14 @@ public class basicZombieAI : MonoBehaviour {
 	private float distance;
 	private Animator anim;
 	private bool isWalking = false;
-	private bool onTerrain = false;
+	PlayerStuff script1;
+	//private bool onTerrain = false;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
 		target = GameObject.FindWithTag ("Player").transform;
 		anim = GetComponent<Animator> ();
+		script1 = GameObject.FindWithTag ("Player").GetComponent<PlayerStuff> ();
 
 	}
 
@@ -35,6 +37,11 @@ public class basicZombieAI : MonoBehaviour {
 			isWalking = false;
 			anim.SetBool("isWalking", isWalking);
 		}
-		//agent.SetDestination (target.position);
+
+		Vector3 relativePoint = transform.InverseTransformPoint (target.transform.position);
+		if (relativePoint.z > 0.0 && distance < 2) {
+			Debug.Log ("Deal Damage");
+			script1.gainDamage();
+		}
 	}
 }
