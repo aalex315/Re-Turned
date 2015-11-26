@@ -13,14 +13,15 @@ public class basicZombieAI : MonoBehaviour {
 	private float distance;
 	private Animator anim;
 	private bool isWalking = false;
-	PlayerStuff playerStuff;
+	private bool isAttacking = false;
+	PlayerStuff script1;
 	//private bool onTerrain = false;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
-		target = GameObject.FindWithTag ("Player").transform;
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator> ();
-		playerStuff = GameObject.FindWithTag ("Player").GetComponent<PlayerStuff> ();
+		script1 = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStuff>();
 
 	}
 
@@ -39,8 +40,9 @@ public class basicZombieAI : MonoBehaviour {
 			anim.SetBool("isWalking", isWalking);
 		}
 
-		if (checkIfPlayerIsInFront() > 0.0) {
-			//playerStuff.gainDamage();
+		if (checkIfPlayerIsInFront() > 0.0 && distance < 2) {
+			//script1.gainDamage();
+
 		}
 	}
 

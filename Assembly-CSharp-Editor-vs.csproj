@@ -49,7 +49,6 @@
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <None Include="Assets\Assets\Zombie_0_3\AnimationFrameTable\Zombie_0_3.txt" />
      <None Include="Assets\Assets\BigHeads\BigHead Starter\Shader\Outlined Diffuse.shader" />
-     <None Include="Assets\Assets\Zombie_0_4\AnimationFrameTable\Zombie_0_4.txt" />
      <None Include="Assets\Assets\Zombie_0_1\AnimationFrameTable\Zombie_0_1.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Assets\Fantasy Skybox FREE\Readme\Readme.txt" />
