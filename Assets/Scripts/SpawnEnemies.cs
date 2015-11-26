@@ -22,7 +22,7 @@ public class SpawnEnemies : MonoBehaviour {
 		Vector3 pos;
 		pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad); 
 		//pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-		pos.y = -0.01f;
+		pos.y = 0;
 		pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
 		return pos;
 	}
@@ -33,7 +33,9 @@ public class SpawnEnemies : MonoBehaviour {
 			for (int i = 0; i < zombieCount; i++){
 				Vector3 pos = RandomCircle(center, Random.Range(minSpawnRadius, maxSpawnRadius));
 				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center-pos);
-				Instantiate(prefab, pos, rot);
+				if (Physics.CheckSphere(new Vector3(pos.x, 1.1f, pos.z), 1) == false) {
+					Instantiate(prefab, pos, rot);
+				}
 			}
 		}
 	}

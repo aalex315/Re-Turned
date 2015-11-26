@@ -8,13 +8,13 @@ public class basicZombieAI : MonoBehaviour {
 	public float spottingLenght = 10;
 	public float lostLenght = 20;
 	public float attackDistance = 2;
+	public int damage = 20;
 
 	private Transform target;
 	private Transform currentDest;
 	private float distance;
 	private Animator anim;
 	private bool isWalking = false;
-	private bool isAttacking = false;
 	PlayerStuff script1;
 	//private bool onTerrain = false;
 
@@ -24,6 +24,15 @@ public class basicZombieAI : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		script1 = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStuff>();
 
+		/*if (agent.isOnNavMesh == false) {
+
+		}*/
+
+		NavMeshHit closestHit;
+
+		if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas)) {
+			gameObject.transform.position = closestHit.position + new Vector3(10, 0 ,10);
+		}
 	}
 
 	void Update () {
@@ -37,16 +46,13 @@ public class basicZombieAI : MonoBehaviour {
 		}
 		else if (distance >= lostLenght) {
 			agent.Stop();
-			//agent.SetDestination(transform.position);
 			isWalking = false;
 			anim.SetBool("isWalking", isWalking);
 		}
 
 		if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance) {
-			//script1.gainDamage();
 			agent.Stop();
 			StartCoroutine(PlayOneShot("isAttacking"));
-
 		}
 	}
 
@@ -59,6 +65,7 @@ public class basicZombieAI : MonoBehaviour {
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
 		anim.SetBool (paramName, false);
+		script1.gainDamage (damage);
 		agent.Resume();
 	}
 }

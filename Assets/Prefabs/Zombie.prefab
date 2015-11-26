@@ -26,9 +26,9 @@ GameObject:
   - 4: {fileID: 460332}
   - 95: {fileID: 9525526}
   - 195: {fileID: 19587580}
-  - 114: {fileID: 11443386}
   - 136: {fileID: 13697986}
   - 54: {fileID: 5447048}
+  - 114: {fileID: 11443386}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spottingLenght: 10
   lostLenght: 20
+  attackDistance: 2
+  damage: 20
 --- !u!136 &13697986
 CapsuleCollider:
   m_ObjectHideFlags: 1
