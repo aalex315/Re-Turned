@@ -35,13 +35,14 @@ public class basicZombieAI : MonoBehaviour {
 		}
 		else if (distance >= lostLenght) {
 			agent.SetDestination(transform.position);
-			//agent.Stop(true);
 			isWalking = false;
 			anim.SetBool("isWalking", isWalking);
 		}
 
 		if (checkIfPlayerIsInFront() > 0.0 && distance < 2) {
 			//script1.gainDamage();
+			agent.Stop();
+			StartCoroutine(PlayOneShot("isAttacking"));
 
 		}
 	}
@@ -49,5 +50,12 @@ public class basicZombieAI : MonoBehaviour {
 	float checkIfPlayerIsInFront(){
 		Vector3 relativePoint = transform.InverseTransformPoint (target.transform.position);
 		return relativePoint.z;
+	}
+
+	public IEnumerator PlayOneShot(string paramName){
+		anim.SetBool (paramName, true);
+		yield return new WaitForSeconds(1);
+		agent.Resume();
+		anim.SetBool (paramName, false);
 	}
 }
