@@ -66,7 +66,7 @@ public class basicZombieAI : MonoBehaviour {
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
 		anim.SetBool (paramName, false);
-		//script1.gainDamage (damage);
+		script1.gainDamage (damage);
 		agent.Resume();
 	}
 }
