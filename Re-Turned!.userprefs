@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpawnEnemies.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\basicZombieAI.cs">
     <Files>
       <File FileName="Assets\Scripts\PlayerStuff.cs" Line="11" Column="22" />
-      <File FileName="Assets\Scripts\basicZombieAI.cs" Line="22" Column="2" />
+      <File FileName="Assets\Scripts\basicZombieAI.cs" Line="67" Column="38" />
       <File FileName="Assets\Scripts\SpawnEnemies.cs" Line="42" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
