@@ -9,6 +9,7 @@ public class basicZombieAI : MonoBehaviour {
 	public float lostLenght = 20;
 	public float attackDistance = 2;
 	public int damage = 20;
+	public float health = 100;
 
 	private Transform target;
 	private Transform currentDest;
@@ -37,6 +38,7 @@ public class basicZombieAI : MonoBehaviour {
 	}
 
 	void Update () {
+		checkIfDead ();
 		distance = Vector3.Distance (transform.position, target.transform.position);
 		if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0) {
 			agent.Resume();
@@ -54,6 +56,19 @@ public class basicZombieAI : MonoBehaviour {
 		if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance && this.anim.GetCurrentAnimatorStateInfo(0).IsName("attack0") == false) {
 			agent.Stop();
 			StartCoroutine(PlayOneShot("isAttacking"));
+		}
+	}
+
+	void OnCollisionEnter(Collision other){
+		if (other.gameObject.tag == "Bullet") {
+			health -= 30;
+			print(health);
+		}
+	}
+
+	void checkIfDead(){
+		if (health <= 0) {
+			Destroy(gameObject);
 		}
 	}
 
