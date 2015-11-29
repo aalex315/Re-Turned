@@ -15,7 +15,6 @@ public class SpawnEnemies : MonoBehaviour {
 	void Update() {
 		countZombies = GameObject.FindGameObjectsWithTag ("Zombie");
 		if (countZombies.Length < zombieCount) {
-			Debug.Log(countZombies.Length);
 			spawnZombies ();
 		}
 	}

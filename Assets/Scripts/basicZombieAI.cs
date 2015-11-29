@@ -16,16 +16,18 @@ public class basicZombieAI : MonoBehaviour {
 	private float distance;
 	private Animator anim;
 	private bool isWalking = false;
+	private bool isDead = false;
+	private Collider c;
+	private Rigidbody r;
 	PlayerStuff script1;
-	//PlayerStuff script1;
-	//private bool onTerrain = false;
-
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator> ();
 		script1 = GetComponent<PlayerStuff> ();
+		c = GetComponent<Collider> ();
+		r = GetComponent<Rigidbody> ();
 
 		//Moves to navmesh if outside of it
 		NavMeshHit closestHit;
@@ -38,37 +40,49 @@ public class basicZombieAI : MonoBehaviour {
 	}
 
 	void Update () {
-		checkIfDead ();
-		distance = Vector3.Distance (transform.position, target.transform.position);
-		if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0) {
-			agent.Resume();
-			agent.SetDestination (target.position);
-			isWalking = true;
-			anim.SetBool("isWalking", isWalking);
-
-		}
-		else if (distance >= lostLenght) {
-			agent.Stop();
-			isWalking = false;
-			anim.SetBool("isWalking", isWalking);
-		}
-
-		if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance && this.anim.GetCurrentAnimatorStateInfo(0).IsName("attack0") == false) {
-			agent.Stop();
-			StartCoroutine(PlayOneShot("isAttacking"));
+		if (!isDead) {
+			distance = Vector3.Distance (transform.position, target.transform.position);
+			if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0) {
+				agent.Resume();
+				agent.SetDestination (target.position);
+				isWalking = true;
+				anim.SetBool("isWalking", isWalking);
+				
+			}
+			else if (distance >= lostLenght) {
+				agent.Stop();
+				isWalking = false;
+				anim.SetBool("isWalking", isWalking);
+			}
+			
+			if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance && this.anim.GetCurrentAnimatorStateInfo(0).IsName("attack0") == false) {
+				agent.Stop();
+				StartCoroutine(PlayOneShot("isAttacking"));
+			}
 		}
 	}
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Bullet") {
+			Destroy(other.gameObject);
 			health -= 30;
-			print(health);
+			agent.Resume();
+			agent.SetDestination (target.position);
+			checkIfDead ();
+			isWalking = true;
+			anim.SetBool("isWalking", isWalking);
 		}
 	}
 
 	void checkIfDead(){
 		if (health <= 0) {
-			Destroy(gameObject);
+			isDead = true;
+			anim.SetBool("isDead", isDead);
+			agent.Stop();
+			r.isKinematic = true;
+			c.enabled = false;
+			agent.enabled = false;
+
 		}
 	}
 
