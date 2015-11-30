@@ -3,9 +3,7 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
-	public Rigidbody projectile;
-	public Transform barrelEnd;
-	public float speed = 20;
+	public GameObject particle;
 
 	private AudioSource gunshot;
 	private Animator anim;
@@ -27,6 +25,7 @@ public class Shoot : MonoBehaviour {
 				if (hit.collider.tag == "Zombie") {
 					hit.transform.SendMessage("GainDamage", 20f);
 					Debug.Log(hit.distance);
+					Instantiate(particle, hit.point, hit.transform.rotation);
 				}
 			}
 			shooting = true;
