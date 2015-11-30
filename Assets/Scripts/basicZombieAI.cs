@@ -62,16 +62,13 @@ public class basicZombieAI : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision other){
-		if (other.gameObject.tag == "Bullet") {
-			Destroy(other.gameObject);
-			health -= 30;
-			agent.Resume();
-			agent.SetDestination (target.position);
-			checkIfDead ();
-			isWalking = true;
-			anim.SetBool("isWalking", isWalking);
-		}
+	void GainDamage(float damage){
+		health -= damage;
+		agent.Resume ();
+		agent.SetDestination (target.position);
+		checkIfDead ();
+		isWalking = true;
+		anim.SetBool ("isWalking", isWalking);
 	}
 
 	void checkIfDead(){
@@ -95,7 +92,7 @@ public class basicZombieAI : MonoBehaviour {
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
 		anim.SetBool (paramName, false);
-		script1.gainDamage (damage);
+		script1.GainDamage (damage);
 		agent.Resume();
 	}
 }

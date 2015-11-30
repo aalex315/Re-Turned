@@ -18,14 +18,21 @@ public class Shoot : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetButtonDown("Fire1")) {
+			int x = Screen.width / 2;
+			int y = Screen.height / 2;
+
+			RaycastHit hit;
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(x, y)),out hit)) {
+				Debug.Log(hit.point);
+				if (hit.collider.tag == "Zombie") {
+					hit.transform.SendMessage("GainDamage", 20f);
+					Debug.Log(hit.distance);
+				}
+			}
 			shooting = true;
-			Debug.Log(shooting);
-			Rigidbody instantiatedProjectile = Instantiate(projectile, barrelEnd.position, barrelEnd.rotation)as Rigidbody;
-			instantiatedProjectile.AddForce(barrelEnd.forward * -speed);
 			gunshot.Play();
 			anim.SetBool("shooting", shooting);
 			shooting = false;
-			Debug.Log(shooting);
 		}
 	}
 }

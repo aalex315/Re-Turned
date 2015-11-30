@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerStuff : MonoBehaviour {
 
-	public int health = 100;
+	public float health = 100;
 	public int dealsDamage = 35;
 
-	public void gainDamage(int damage){
+	public void GainDamage(float damage){
 		health -= damage;
 		Debug.Log (health);
 	}
