@@ -17,8 +17,8 @@ public class basicZombieAI : MonoBehaviour {
 	private Animator anim;
 	private bool isWalking = false;
 	private bool isDead = false;
-	private Collider c;
-	private Rigidbody r;
+	private Collider coll;
+	private Rigidbody rb;
 	PlayerStuff script1;
 
 	void Awake () {
@@ -26,8 +26,8 @@ public class basicZombieAI : MonoBehaviour {
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator> ();
 		script1 = GetComponent<PlayerStuff> ();
-		c = GetComponent<Collider> ();
-		r = GetComponent<Rigidbody> ();
+		coll = GetComponent<Collider> ();
+		rb = GetComponent<Rigidbody> ();
 
 		//Moves to navmesh if outside of it
 		NavMeshHit closestHit;
@@ -76,9 +76,10 @@ public class basicZombieAI : MonoBehaviour {
 			isDead = true;
 			anim.SetBool("isDead", isDead);
 			agent.Stop();
-			r.isKinematic = true;
-			c.enabled = false;
+			rb.isKinematic = true;
+			coll.enabled = false;
 			agent.enabled = false;
+			target.SendMessage("spawnOneEnemy");
 
 		}
 	}

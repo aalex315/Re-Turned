@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
-	public GameObject particle;
+	public GameObject bloodParticle;
+	public GameObject particle2;
 
 	private AudioSource gunshot;
 	private Animator anim;
@@ -23,7 +24,10 @@ public class Shoot : MonoBehaviour {
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(x, y)),out hit)) {
 				if (hit.collider.tag == "Zombie") {
 					hit.transform.SendMessage("GainDamage", 20f);
-					Instantiate(particle, hit.point, hit.transform.rotation);
+					Instantiate(bloodParticle, hit.point, hit.transform.rotation);
+				}
+				else {
+					Instantiate(particle2, hit.point, hit.transform.rotation);
 				}
 			}
 			shooting = true;

@@ -19,5 +19,10 @@ public class Explosion : MonoBehaviour {
 				rb.AddExplosionForce(power, explosionPos, radius);
 			}
 		}
+		Invoke ("Destroy", 5);
+	}
+
+	void Destroy(){
+		Destroy (gameObject);
 	}
 }

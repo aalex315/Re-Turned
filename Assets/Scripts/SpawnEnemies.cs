@@ -12,11 +12,9 @@ public class SpawnEnemies : MonoBehaviour {
 	private Transform target;
 	private GameObject[] countZombies;
 
-	void Update() {
+	void Awake() {
 		countZombies = GameObject.FindGameObjectsWithTag ("Zombie");
-		if (countZombies.Length < zombieCount) {
-			spawnZombies ();
-		}
+		spawnZombies ();
 	}
 	
 	Vector3 RandomCircle (Vector3 center, float radius){
@@ -39,6 +37,17 @@ public class SpawnEnemies : MonoBehaviour {
 			if (Physics.CheckSphere(new Vector3(pos.x, pos.y + 1.1f, pos.z), 1) == false) {
 				Instantiate(prefab, pos, rot);
 			}
+		}
+	}
+
+	void spawnOneEnemy(){
+		Vector3 center = transform.position;
+		Vector3 pos = RandomCircle(center, Random.Range(minSpawnRadius, maxSpawnRadius));
+		//Get height of terrain
+		pos.y = Terrain.activeTerrain.SampleHeight(pos);
+		Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center-pos);
+		if (Physics.CheckSphere(new Vector3(pos.x, pos.y + 1.1f, pos.z), 1) == false) {
+			Instantiate(prefab, pos, rot);
 		}
 	}
 }
