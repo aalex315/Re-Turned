@@ -92,7 +92,7 @@ public class basicZombieAI : MonoBehaviour {
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
 		anim.SetBool (paramName, false);
-		script1.GainDamage (damage);
+		target.SendMessage ("GainDamage", 30);
 		agent.Resume();
 	}
 }

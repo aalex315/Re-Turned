@@ -47,12 +47,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\DayNightController.cs" />
+     <Compile Include="Assets\Scripts\Explosion.cs" />
+     <Compile Include="Assets\Scripts\Grenade.cs" />
      <Compile Include="Assets\Scripts\PlayerStuff.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\basicZombieAI.cs" />
      <Compile Include="Assets\Scripts\destroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\destroyBullet.cs" />
+     <Compile Include="Assets\Scripts\throwGrenade.cs" />
      <Compile Include="Assets\Scripts\zombieAI.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
