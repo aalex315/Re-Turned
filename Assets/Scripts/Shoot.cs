@@ -21,10 +21,8 @@ public class Shoot : MonoBehaviour {
 
 			RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(x, y)),out hit)) {
-				Debug.Log(hit.point);
 				if (hit.collider.tag == "Zombie") {
 					hit.transform.SendMessage("GainDamage", 20f);
-					Debug.Log(hit.distance);
 					Instantiate(particle, hit.point, hit.transform.rotation);
 				}
 			}
