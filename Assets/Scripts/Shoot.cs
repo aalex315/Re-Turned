@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour {
 	public GameObject bloodParticle;
 	public GameObject particle2;
 	public float fireRate = 0.5f;
+	public float soundRadius = 50.0f;
 
 	private AudioSource gunshot;
 	private Animator anim;
@@ -40,10 +41,19 @@ public class Shoot : MonoBehaviour {
 		}
 		shooting = true;
 		gunshot.Play();
+		SendDetection ();
 		anim.SetBool("shooting", shooting);
 		shooting = false;
 		allowFire = false;
 		yield return new WaitForSeconds (fireRate);
 		allowFire = true;
+	}
+	void SendDetection(){
+		Collider[] cols = Physics.OverlapSphere (transform.position, soundRadius);
+		foreach (Collider col in cols) {
+			if (col.tag == "Zombie") {
+				col.gameObject.SendMessage("DetectPlayer");
+			}
+		}
 	}
 }

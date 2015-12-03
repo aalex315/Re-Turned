@@ -20,6 +20,9 @@ public class PlayerStuff : MonoBehaviour {
 	//Weapons
 	public GameObject baseballBat;
 	public GameObject handgun;
+	//GUI
+	public Rect healthRect;
+	public Texture2D healthTexture;
 
 	private GameObject equipped;
 	private bool hasBaseballBat = false;
@@ -31,12 +34,18 @@ public class PlayerStuff : MonoBehaviour {
 	void Start(){
 		baseballBat.SetActive (true);
 		equipped = baseballBat;
+		healthRect = new Rect (Screen.width/50,Screen.height*19/20, Screen.width/75, Screen.height/75);
+		healthTexture = new Texture2D (1,1);
+		Color healthBarColor = new Color ();
+		Color.TryParseHexString ("#ce0000", out healthBarColor);
+		healthTexture.SetPixel (0,0, healthBarColor);
+		healthTexture.Apply ();
 	}
 
 	void Update(){
 		RaycastHit hit;
 		if (Physics.Raycast (Camera.main.ScreenPointToRay (new Vector3 (x, y)), out hit, 2)) {
-			if (hit.collider.tag == "Baseball Bat") {
+			if (hit.collider.tag == "Baseball Bat" && hasBaseballBat) {
 				if(Input.GetKeyDown(KeyCode.E)){
 					Destroy(hit.collider.gameObject);
 					hasBaseballBat = true;
@@ -92,6 +101,7 @@ public class PlayerStuff : MonoBehaviour {
 
 	public void GainDamage(float damage){
 		curHealth -= damage;
+		Debug.Log (curHealth);
 	}
 
 	void CheapAssInventory(){
@@ -105,5 +115,12 @@ public class PlayerStuff : MonoBehaviour {
 			handgun.SetActive(true);
 			equipped = handgun;
 		}
+	}
+
+	void OnGUI(){
+		float healthRatio = curHealth / maxHealth;
+		float rectWidth = healthRatio * Screen.width / 3;
+		healthRect.width = rectWidth;
+		GUI.DrawTexture (healthRect,healthTexture);
 	}
 }

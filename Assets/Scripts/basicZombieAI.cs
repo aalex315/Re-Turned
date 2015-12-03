@@ -104,10 +104,21 @@ public class basicZombieAI : MonoBehaviour {
 	public IEnumerator PlayOneShot(string paramName){
 		notBusy = false;
 		anim.SetBool (paramName, true);
-		yield return new WaitForSeconds(1);
-		target.SendMessage ("GainDamage", 30);
+		yield return new WaitForSeconds(1f);
+		if (distance < attackDistance) {
+			target.SendMessage ("GainDamage", 30);
+		}
 		anim.SetBool (paramName, false);
 		agent.Resume();
 		notBusy = true;
+	}
+
+	void DetectPlayer(){
+		spottedPlayer = true;
+		agent.Resume ();
+		agent.SetDestination (target.transform.position);
+		isWalking = true;
+		anim.SetBool("isWalking", isWalking);
+		print ("Detected");
 	}
 }
