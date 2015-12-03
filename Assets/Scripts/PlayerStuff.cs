@@ -13,15 +13,20 @@ public class PlayerStuff : MonoBehaviour {
 	public float curFood = 100.0f;
 	public float foodDrainSpeed = 500.0f;//Milliseconds for 1 food to drop
 	public float foodItemsHeal = 30.0f;
+	public float foodWarning = 40.0f;
 	//Water stuff
 	public float maxWater = 100.0f;
 	public float curWater = 100.0f;
 	public float waterDrainSpeed = 100.0f;//Milliseconds for 1 water to drop
 	public float waterItemsHeal = 30.0f;
+	public float waterWarning = 40.0f;
 	//Weapons
 	public GameObject baseballBat;
 	public GameObject handgun;
 	public Text pickupText;
+	public Image waterIcon;
+	public Image foodIcon;
+
 
 	private GameObject equipped;
 	private bool hasBaseballBat = false;
@@ -79,16 +84,13 @@ public class PlayerStuff : MonoBehaviour {
 			Debug.Log(curWater);
 			if (curWater > maxWater) {
 				curWater = maxWater;
-				Debug.Log (curWater);
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.X)) {
 			curFood += foodItemsHeal;
 			foodSupply--;
 			if (curFood > maxFood) {
-				Debug.Log(curFood);
 				curFood = maxFood;
-				Debug.Log (curFood);
 			}
 		}
 
@@ -96,6 +98,9 @@ public class PlayerStuff : MonoBehaviour {
 		CheapAssInventory ();
 		//Drain water & food meters
 		drain ();
+		//Display Food Warning
+		print (curFood);
+		displayFoodWaterIcon ();
 	}
 
 	void drain(){
@@ -111,7 +116,6 @@ public class PlayerStuff : MonoBehaviour {
 
 	public void GainDamage(float damage){
 		curHealth -= damage;
-		Debug.Log (curHealth);
 	}
 
 	void CheapAssInventory(){
@@ -124,6 +128,23 @@ public class PlayerStuff : MonoBehaviour {
 			equipped.SetActive(false);
 			handgun.SetActive(true);
 			equipped = handgun;
+		}
+	}
+
+	void displayFoodWaterIcon(){
+		if (waterWarning > curWater) {
+			waterIcon.enabled = true;
+		} 
+		else if (waterWarning < curWater) {
+			waterIcon.enabled = false;
+		}
+
+		if (foodWarning > curFood) {
+			print("warning");
+			foodIcon.enabled = true;
+		} 
+		else if (foodWarning < curFood) {
+			foodIcon.enabled = false;
 		}
 	}
 

@@ -120,6 +120,5 @@ public class basicZombieAI : MonoBehaviour {
 		agent.SetDestination (soundPoint.position);
 		isWalking = true;
 		anim.SetBool("isWalking", isWalking);
-		print ("Detected");
 	}
 }

@@ -109,6 +109,7 @@ MonoBehaviour:
   attackDistance: 2
   damage: 20
   health: 100
+  despawnDistance: 300
 --- !u!136 &13697986
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -207,6 +208,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: despawnDistance
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

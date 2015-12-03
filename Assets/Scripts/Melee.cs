@@ -27,7 +27,6 @@ public class Melee : MonoBehaviour {
 		if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(x, y)),out hit, reach)) {
 			if (hit.collider.tag == "Zombie") {
 				hit.transform.SendMessage("GainDamage", damage);
-				Debug.Log("Hitting Zombie");
 			}
 		}
 
