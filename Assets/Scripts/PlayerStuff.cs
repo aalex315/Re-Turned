@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerStuff : MonoBehaviour {
 
@@ -20,9 +21,7 @@ public class PlayerStuff : MonoBehaviour {
 	//Weapons
 	public GameObject baseballBat;
 	public GameObject handgun;
-	//GUI
-	public Rect healthRect;
-	public Texture2D healthTexture;
+	public Text pickupText;
 
 	private GameObject equipped;
 	private bool hasBaseballBat = false;
@@ -30,10 +29,14 @@ public class PlayerStuff : MonoBehaviour {
 	private int y = Screen.height / 2;
 	private int waterSupply = 0;
 	private int foodSupply = 0;
+	//GUI
+	private Rect healthRect;
+	private Texture2D healthTexture;
 
 	void Start(){
 		baseballBat.SetActive (true);
 		equipped = baseballBat;
+		//GUI
 		healthRect = new Rect (Screen.width/50,Screen.height*19/20, Screen.width/75, Screen.height/75);
 		healthTexture = new Texture2D (1,1);
 		Color healthBarColor = new Color ();
@@ -44,23 +47,28 @@ public class PlayerStuff : MonoBehaviour {
 
 	void Update(){
 		RaycastHit hit;
+		pickupText.text = "";
 		if (Physics.Raycast (Camera.main.ScreenPointToRay (new Vector3 (x, y)), out hit, 2)) {
 			if (hit.collider.tag == "Baseball Bat" && hasBaseballBat) {
+				pickupText.text = "Press 'E' to pickup";
 				if(Input.GetKeyDown(KeyCode.E)){
 					Destroy(hit.collider.gameObject);
 					hasBaseballBat = true;
 				}
 			}
 			else if (hit.collider.tag == "Water") {
+				pickupText.text = "Press 'E' to pickup";
 				if (Input.GetKeyDown(KeyCode.E)) {
 					Destroy(hit.collider.gameObject);
 					waterSupply++;
 				}
 			}
 			else if (hit.collider.tag == "Food") {
+				pickupText.text = "Press 'E' to pickup";
 				if (Input.GetKeyDown(KeyCode.E)) {
 					Destroy(hit.collider.gameObject);
 					foodSupply++;
+					Debug.Log (foodSupply);
 				}
 			}
 		}
@@ -78,7 +86,9 @@ public class PlayerStuff : MonoBehaviour {
 			curFood += foodItemsHeal;
 			foodSupply--;
 			if (curFood > maxFood) {
+				Debug.Log(curFood);
 				curFood = maxFood;
+				Debug.Log (curFood);
 			}
 		}
 

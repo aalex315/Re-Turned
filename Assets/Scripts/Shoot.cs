@@ -12,6 +12,11 @@ public class Shoot : MonoBehaviour {
 	private Animator anim;
 	private bool shooting = false;
 	private bool allowFire = true;
+	private GUIText ammoCounter;
+
+	void Start(){
+		ammoCounter = GameObject.Find ("AmmoCounter").GetComponent<GUIText>();
+	}
 
 	void Awake(){
 		gunshot = GetComponent<AudioSource> ();
@@ -43,9 +48,10 @@ public class Shoot : MonoBehaviour {
 		gunshot.Play();
 		SendDetection ();
 		anim.SetBool("shooting", shooting);
-		shooting = false;
+
 		allowFire = false;
 		yield return new WaitForSeconds (fireRate);
+		shooting = false;
 		allowFire = true;
 	}
 	void SendDetection(){

@@ -116,7 +116,8 @@ public class basicZombieAI : MonoBehaviour {
 	void DetectPlayer(){
 		spottedPlayer = true;
 		agent.Resume ();
-		agent.SetDestination (target.transform.position);
+		Transform soundPoint = target.transform;
+		agent.SetDestination (soundPoint.position);
 		isWalking = true;
 		anim.SetBool("isWalking", isWalking);
 		print ("Detected");

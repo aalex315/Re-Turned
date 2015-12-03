@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Bullet
   - Baseball Bat
+  - Water
   layers:
   - Default
   - TransparentFX
