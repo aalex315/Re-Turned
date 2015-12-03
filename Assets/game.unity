@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reach: 3
+  damage: 25
 --- !u!95 &77522821
 Animator:
   serializedVersion: 3
@@ -966,6 +967,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxFood: 100
+  curFood: 100
+  foodDrainSpeed: 5000
+  maxWater: 100
+  curWater: 100
+  waterDrainSpeed: 5000
   baseballBat: {fileID: 77522814}
   handgun: {fileID: 1699808348}
 --- !u!1001 &1385718774

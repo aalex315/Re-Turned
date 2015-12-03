@@ -10,6 +10,7 @@ public class basicZombieAI : MonoBehaviour {
 	public float attackDistance = 2;
 	public int damage = 20;
 	public float health = 100;
+	public float despawnDistance = 200.0f;
 
 	private Transform target;
 	private Transform currentDest;
@@ -20,6 +21,7 @@ public class basicZombieAI : MonoBehaviour {
 	private Collider coll;
 	private Rigidbody rb;
 	private bool notBusy = true;
+	private bool spottedPlayer = false;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
@@ -41,16 +43,22 @@ public class basicZombieAI : MonoBehaviour {
 	void Update () {
 		if (!isDead && agent) {
 			distance = Vector3.Distance (transform.position, target.transform.position);
-			if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0 && notBusy && agent) {
+			if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0 && notBusy && agent && !spottedPlayer) {
 				agent.Resume();
 				agent.SetDestination (target.position);
 				isWalking = true;
 				anim.SetBool("isWalking", isWalking);
 				
 			}
-			else if (distance >= lostLenght && notBusy && agent) {
+			else if (distance >= lostLenght && notBusy && agent && !spottedPlayer) {
 				agent.Stop();
 				isWalking = false;
+				anim.SetBool("isWalking", isWalking);
+			}
+			else if (spottedPlayer) {
+				agent.Resume();
+				agent.SetDestination (target.position);
+				isWalking = true;
 				anim.SetBool("isWalking", isWalking);
 			}
 			
@@ -58,6 +66,10 @@ public class basicZombieAI : MonoBehaviour {
 				agent.Stop();
 				StartCoroutine(PlayOneShot("isAttacking"));
 			}
+		}
+		if(distance >= despawnDistance){
+			target.SendMessage("spawnOneEnemy");
+			Destroy(gameObject);
 		}
 	}
 
@@ -68,6 +80,7 @@ public class basicZombieAI : MonoBehaviour {
 		checkIfDead ();
 		isWalking = true;
 		anim.SetBool ("isWalking", isWalking);
+		spottedPlayer = true;
 	}
 
 	void checkIfDead(){

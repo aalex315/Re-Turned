@@ -2,8 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStuff.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerStuff.cs" Line="40" Column="22" />
-      <File FileName="Assets\Scripts\SpawnEnemies.cs" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\SpawnEnemies.cs" Line="22" Column="64" />
+      <File FileName="Assets\Scripts\PlayerStuff.cs" Line="19" Column="38" />
+      <File FileName="Assets\Scripts\Melee.cs" Line="22" Column="51" />
+      <File FileName="Assets\Scripts\Shoot.cs" Line="34" Column="5" />
+      <File FileName="Assets\Scripts\basicZombieAI.cs" Line="78" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
