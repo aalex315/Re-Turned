@@ -19,13 +19,12 @@ public class basicZombieAI : MonoBehaviour {
 	private bool isDead = false;
 	private Collider coll;
 	private Rigidbody rb;
-	PlayerStuff script1;
+	private bool notBusy = true;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator> ();
-		script1 = GetComponent<PlayerStuff> ();
 		coll = GetComponent<Collider> ();
 		rb = GetComponent<Rigidbody> ();
 
@@ -40,22 +39,22 @@ public class basicZombieAI : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!isDead) {
+		if (!isDead && agent) {
 			distance = Vector3.Distance (transform.position, target.transform.position);
-			if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0) {
+			if (distance <= spottingLenght && checkIfPlayerIsInFront() > 0.0 && notBusy && agent) {
 				agent.Resume();
 				agent.SetDestination (target.position);
 				isWalking = true;
 				anim.SetBool("isWalking", isWalking);
 				
 			}
-			else if (distance >= lostLenght) {
+			else if (distance >= lostLenght && notBusy && agent) {
 				agent.Stop();
 				isWalking = false;
 				anim.SetBool("isWalking", isWalking);
 			}
 			
-			if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance && this.anim.GetCurrentAnimatorStateInfo(0).IsName("attack0") == false) {
+			if (checkIfPlayerIsInFront() > 0.0 && distance < attackDistance && notBusy && agent) {
 				agent.Stop();
 				StartCoroutine(PlayOneShot("isAttacking"));
 			}
@@ -90,10 +89,12 @@ public class basicZombieAI : MonoBehaviour {
 	}
 
 	public IEnumerator PlayOneShot(string paramName){
+		notBusy = false;
 		anim.SetBool (paramName, true);
 		yield return new WaitForSeconds(1);
-		anim.SetBool (paramName, false);
 		target.SendMessage ("GainDamage", 30);
+		anim.SetBool (paramName, false);
 		agent.Resume();
+		notBusy = true;
 	}
 }

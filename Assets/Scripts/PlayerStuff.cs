@@ -29,6 +29,15 @@ public class PlayerStuff : MonoBehaviour {
 		}
 
 		//Cheap ass "inventory system"
+		CheapAssInventory ();
+
+	}
+
+	public void GainDamage(float damage){
+		health -= damage;
+	}
+
+	void CheapAssInventory(){
 		if (Input.GetKeyDown(KeyCode.Alpha1) && baseballBat.activeSelf == false) {
 			equipped.SetActive(false);
 			baseballBat.SetActive(true);
@@ -37,12 +46,7 @@ public class PlayerStuff : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Alpha2) && handgun.activeSelf == false) {
 			equipped.SetActive(false);
 			handgun.SetActive(true);
-			equipped = baseballBat;
+			equipped = handgun;
 		}
-
-	}
-
-	public void GainDamage(float damage){
-		health -= damage;
 	}
 }

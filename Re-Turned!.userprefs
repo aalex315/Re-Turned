@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStuff.cs">
     <Files>
+      <File FileName="Assets\Scripts\PlayerStuff.cs" Line="40" Column="22" />
       <File FileName="Assets\Scripts\SpawnEnemies.cs" Line="13" Column="1" />
-      <File FileName="Assets\Scripts\Shoot.cs" Line="26" Column="22" />
-      <File FileName="Assets\Scripts\PlayerStuff.cs" Line="12" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

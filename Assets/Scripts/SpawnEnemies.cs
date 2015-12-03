@@ -10,10 +10,8 @@ public class SpawnEnemies : MonoBehaviour {
 	public int zombieCount = 30;
 
 	private Transform target;
-	private GameObject[] countZombies;
 
 	void Awake() {
-		countZombies = GameObject.FindGameObjectsWithTag ("Zombie");
 		spawnZombies ();
 	}
 	

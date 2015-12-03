@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\DayNightController.cs" />
      <Compile Include="Assets\Scripts\Explosion.cs" />
      <Compile Include="Assets\Scripts\Grenade.cs" />
+     <Compile Include="Assets\Scripts\Melee.cs" />
      <Compile Include="Assets\Scripts\PlayerStuff.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
