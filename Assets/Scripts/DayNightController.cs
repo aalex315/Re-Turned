@@ -13,7 +13,7 @@ public class DayNightController : MonoBehaviour {
 	float sunInitialIntensity;
 	
 	void Start() {
-		sunInitialIntensity = sun.intensity;
+		sunInitialIntensity = 2.2f;
 	}
 	
 	void Update() {

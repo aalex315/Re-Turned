@@ -8,9 +8,11 @@ public class Melee : MonoBehaviour {
 
 	private Animator anim;
 	private bool allowHitting = true;
+	private AudioSource audios;
 
 	void Awake (){
 		anim = GetComponent<Animator> ();
+		audios = GetComponent < AudioSource>();
 	}
 
 	void Update () {
@@ -32,6 +34,7 @@ public class Melee : MonoBehaviour {
 
 		allowHitting = false;
 		anim.SetBool (paramName, true);
+		audios.Play ();
 		yield return new WaitForSeconds(0.5f);
 		anim.SetBool (paramName, false);
 		allowHitting = true;

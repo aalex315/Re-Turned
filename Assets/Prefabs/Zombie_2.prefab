@@ -810,6 +810,7 @@ MonoBehaviour:
   - {fileID: 148778, guid: a358ad3add40e0645b114a9ed536068e, type: 2}
   - {fileID: 195988, guid: 0574f42326c808743915935310fa87fe, type: 2}
   - {fileID: 126076, guid: f32284fead5f04f46acf3683d9fb06bd, type: 2}
+  - {fileID: 119698, guid: 33adbddaff8b32c48a1c93624177d92b, type: 2}
 --- !u!136 &13673568
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -912,7 +913,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: pickups.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: sounds.Array.data[4]
@@ -990,6 +991,10 @@ Prefab:
       propertyPath: pickups.Array.data[5]
       value: 
       objectReference: {fileID: 126076, guid: f32284fead5f04f46acf3683d9fb06bd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[6]
+      value: 
+      objectReference: {fileID: 119698, guid: 33adbddaff8b32c48a1c93624177d92b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153216}

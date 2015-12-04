@@ -32,6 +32,7 @@ public class PlayerStuff : MonoBehaviour {
 	public Text waterText;
 	public Text foodItems;
 	public Text waterItems;
+	public Text healthPacks;
 	public Text ammo;
 	public GameObject pauseMenu;
 	public GameObject map;
@@ -46,6 +47,7 @@ public class PlayerStuff : MonoBehaviour {
 	private int y = Screen.height / 2;
 	private int waterSupply = 0;
 	private int foodSupply = 0;
+	private int healthSupply = 0;
 	private bool statsActive;
 	//GUI
 	private Rect healthRect;
@@ -67,6 +69,7 @@ public class PlayerStuff : MonoBehaviour {
 		stats.SetActive (false);
 		foodItems.text = "Food Items: " + foodSupply;
 		waterItems.text = "Water Bottles: " + waterSupply;
+		healthPacks.text = "Health Packs: " + healthSupply;
 		pauseMenu.SetActive (false);
 		//Other
 		flashlight.enabled = false;
@@ -125,9 +128,17 @@ public class PlayerStuff : MonoBehaviour {
 					Destroy(hit.collider.gameObject);
 					hasHandgun = true;
 				}
-				else {
+				else if((Input.GetKeyDown(KeyCode.E))){
 					Destroy(hit.collider.gameObject);
 					handgun.SendMessage("AddMoreAmmo", 14);
+				}
+			}
+			else if(hit.collider.tag == "First Aid"){
+				pickupText.text = "Press 'E' to pickup";
+				if (Input.GetKeyDown(KeyCode.E)) {
+					Destroy(hit.collider.gameObject);
+					healthSupply++;
+					healthPacks.text = "Health Packs:" + healthSupply;
 				}
 			}
 		}
@@ -181,6 +192,16 @@ public class PlayerStuff : MonoBehaviour {
 			}
 			else {
 				map.SetActive(true);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.C)) {
+			if (healthSupply > 0) {
+				healthSupply--;
+				curHealth += 20;
+				if (curHealth > maxHealth) {
+					curHealth = maxHealth;
+				}
+				healthPacks.text = "Health Packs: " + healthSupply;
 			}
 		}
 

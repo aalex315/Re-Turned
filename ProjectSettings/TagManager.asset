@@ -14,6 +14,7 @@ TagManager:
   - Handgun
   - Mag
   - ItemSpawn
+  - First Aid
   layers:
   - Default
   - TransparentFX
