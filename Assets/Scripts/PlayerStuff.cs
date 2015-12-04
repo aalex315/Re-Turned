@@ -101,6 +101,13 @@ public class PlayerStuff : MonoBehaviour {
 					camera.SendMessage("AddGrenade");
 				}
 			}
+			else if (hit.collider.tag == "Mag") {
+				pickupText.text = "Press 'E' to pickup";
+				if (Input.GetKeyDown(KeyCode.E)) {
+					Destroy(hit.collider.gameObject);
+					handgun.SendMessage("AddMoreAmmo", 7);
+				}
+			}
 		}
 
 		if (Input.GetKeyDown(KeyCode.Z) && waterSupply > 0) {

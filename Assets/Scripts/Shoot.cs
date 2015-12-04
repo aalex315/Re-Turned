@@ -10,6 +10,9 @@ public class Shoot : MonoBehaviour {
 	public float soundRadius = 50.0f;
 	public Text ammoCounter;
 
+	private int maxAmmoInClip = 7;
+	private int ammoInClip = 7;
+	private int totalAmmo = 14;
 	private AudioSource gunshot;
 	private Animator anim;
 	private bool shooting = false;
@@ -18,12 +21,18 @@ public class Shoot : MonoBehaviour {
 	void Awake(){
 		gunshot = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
-		allowFire = true;
 	}
 
 	void Update () {
-		if (Input.GetButtonDown("Fire1") && allowFire) {
-			StartCoroutine(Fire ());
+		if (Input.GetButtonDown("Fire1") && allowFire && ammoInClip > 0) {
+			StartCoroutine(Fire());
+		}
+		else if(Input.GetKeyDown(KeyCode.R)){
+			StartCoroutine(Reload());
+		}
+
+		if (ammoInClip == 0) {
+			StartCoroutine(Reload());
 		}
 	}
 
@@ -41,6 +50,8 @@ public class Shoot : MonoBehaviour {
 				Instantiate(particle2, hit.point, hit.transform.rotation);
 			}
 		}
+		ammoInClip--;
+		UpdateText ();
 		shooting = true;
 		gunshot.Play();
 		SendDetection ();
@@ -51,6 +62,23 @@ public class Shoot : MonoBehaviour {
 		shooting = false;
 		allowFire = true;
 	}
+
+	IEnumerator Reload(){
+		allowFire = false;
+		yield return new WaitForSeconds (1);
+		int ammoNeeded = maxAmmoInClip - ammoInClip;
+		if (totalAmmo >= ammoNeeded) {
+			totalAmmo -= ammoNeeded;
+			ammoInClip += ammoNeeded;
+		}
+		else {
+			ammoInClip += totalAmmo;
+			totalAmmo = 0;
+		}
+		UpdateText ();
+		allowFire = true;
+	}
+
 	void SendDetection(){
 		Collider[] cols = Physics.OverlapSphere (transform.position, soundRadius);
 		foreach (Collider col in cols) {
@@ -59,4 +87,16 @@ public class Shoot : MonoBehaviour {
 			}
 		}
 	}
+
+	void UpdateText(){
+		ammoCounter.text = ammoInClip + "/" + totalAmmo;
+	}
+
+	void AddMoreAmmo(int count){
+		print (totalAmmo);
+		totalAmmo += count;
+		print (totalAmmo);
+		UpdateText ();
+	}
+
 }

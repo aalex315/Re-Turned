@@ -10,6 +10,9 @@ TagManager:
   - Baseball Bat
   - Water
   - Food
+  - Grenade
+  - Handgun
+  - Mag
   layers:
   - Default
   - TransparentFX
