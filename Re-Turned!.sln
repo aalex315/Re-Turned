@@ -7,6 +7,8 @@ Project("{42015BE0-3061-8EE5-EC17-67A8012D17FE}") = "Re-Turned!", "Assembly-CSha
 EndProject
 Project("{42015BE0-3061-8EE5-EC17-67A8012D17FE}") = "Re-Turned!", "Assembly-CSharp-Editor.csproj", "{1B167391-9A12-CA9C-4ABB-4870FFAFB2FF}"
 EndProject
+Project("{42015BE0-3061-8EE5-EC17-67A8012D17FE}") = "Re-Turned!", "Assembly-UnityScript.unityproj", "{6B5882F4-52B0-348E-9E16-05B3C4FD79EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +27,15 @@ Global
 		{1B167391-9A12-CA9C-4ABB-4870FFAFB2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B167391-9A12-CA9C-4ABB-4870FFAFB2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B167391-9A12-CA9C-4ABB-4870FFAFB2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5882F4-52B0-348E-9E16-05B3C4FD79EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5882F4-52B0-348E-9E16-05B3C4FD79EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5882F4-52B0-348E-9E16-05B3C4FD79EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5882F4-52B0-348E-9E16-05B3C4FD79EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

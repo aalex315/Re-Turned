@@ -31,7 +31,6 @@ public class basicZombieAI : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		coll = GetComponent<Collider> ();
 		rb = GetComponent<Rigidbody> ();
-		audios.GetComponent<AudioSource> ();
 		InvokeRepeating ("PlayRandomSound", Random.Range(0,5), Random.Range(5,10));
 
 		//Moves to navmesh if outside of it
