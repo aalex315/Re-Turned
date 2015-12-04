@@ -21,6 +21,7 @@ public class Shoot : MonoBehaviour {
 	void Awake(){
 		gunshot = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
+		UpdateText ();
 	}
 
 	void Update () {

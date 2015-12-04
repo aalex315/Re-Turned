@@ -209,6 +209,7 @@ GameObject:
   - 136: {fileID: 13673568}
   - 195: {fileID: 19552002}
   - 114: {fileID: 11412070}
+  - 82: {fileID: 8290880}
   m_Layer: 0
   m_Name: Zombie_2
   m_TagString: Zombie
@@ -692,6 +693,75 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!82 &8290880
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153216}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9544902
 Animator:
   serializedVersion: 3
@@ -726,6 +796,13 @@ MonoBehaviour:
   damage: 20
   health: 100
   despawnDistance: 200
+  sounds:
+  - {fileID: 8300000, guid: 7b0f8b2d663cd4d6182273b36894bef9, type: 3}
+  - {fileID: 8300000, guid: 934fe701a479b45289f84c86c7e812bf, type: 3}
+  - {fileID: 8300000, guid: 5255c97d6110443b89df98835e9fb3ff, type: 3}
+  - {fileID: 8300000, guid: 98fde2bd5e10540a39620c2ae8adb50e, type: 3}
+  - {fileID: 8300000, guid: 6bb4519d95e5e45f1a0cf8600f54ba19, type: 3}
+  audios: {fileID: 8290880}
 --- !u!136 &13673568
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -821,7 +898,55 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: sounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bb4519d95e5e45f1a0cf8600f54ba19, type: 3}
+    - target: {fileID: 0}
+      propertyPath: sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b0f8b2d663cd4d6182273b36894bef9, type: 3}
+    - target: {fileID: 0}
+      propertyPath: sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 934fe701a479b45289f84c86c7e812bf, type: 3}
+    - target: {fileID: 0}
+      propertyPath: sounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5255c97d6110443b89df98835e9fb3ff, type: 3}
+    - target: {fileID: 0}
+      propertyPath: sounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 98fde2bd5e10540a39620c2ae8adb50e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaxDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: audios
+      value: 
+      objectReference: {fileID: 8290880}
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153216}

@@ -11,6 +11,8 @@ public class basicZombieAI : MonoBehaviour {
 	public int damage = 20;
 	public float health = 100;
 	public float despawnDistance = 200.0f;
+	public AudioClip[] sounds;
+	public AudioSource audios;
 
 	private Transform target;
 	private Transform currentDest;
@@ -29,6 +31,8 @@ public class basicZombieAI : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		coll = GetComponent<Collider> ();
 		rb = GetComponent<Rigidbody> ();
+		audios.GetComponent<AudioSource> ();
+		InvokeRepeating ("PlayRandomSound", Random.Range(0,5), Random.Range(5,10));
 
 		//Moves to navmesh if outside of it
 		NavMeshHit closestHit;
@@ -92,7 +96,7 @@ public class basicZombieAI : MonoBehaviour {
 			coll.enabled = false;
 			agent.enabled = false;
 			target.SendMessage("spawnOneEnemy");
-
+			StartCoroutine(DeathSound());
 		}
 	}
 
@@ -120,5 +124,17 @@ public class basicZombieAI : MonoBehaviour {
 		agent.SetDestination (soundPoint.position);
 		isWalking = true;
 		anim.SetBool("isWalking", isWalking);
+	}
+
+	void PlayRandomSound(){
+		if (audios.enabled == true) {
+			audios.PlayOneShot (sounds[Random.Range(0,sounds.Length - 1)]);
+		}
+	}
+
+	IEnumerator DeathSound(){
+		audios.PlayOneShot(sounds[4]);
+		yield return new WaitForSeconds(5f);
+		audios.enabled = false;
 	}
 }

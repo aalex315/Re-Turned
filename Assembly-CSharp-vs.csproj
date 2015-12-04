@@ -57,7 +57,6 @@
      <Compile Include="Assets\Scripts\destroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\destroyBullet.cs" />
      <Compile Include="Assets\Scripts\throwGrenade.cs" />
-     <Compile Include="Assets\Scripts\zombieAI.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
