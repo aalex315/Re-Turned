@@ -33,6 +33,8 @@ public class PlayerStuff : MonoBehaviour {
 	public Text foodItems;
 	public Text waterItems;
 	public Text ammo;
+	//Others
+	public Light flashlight;
 	
 	private GameObject camera;
 	private GameObject equipped;
@@ -61,6 +63,7 @@ public class PlayerStuff : MonoBehaviour {
 		stats.SetActive (false);
 		foodItems.text = "Food Items: " + foodSupply;
 		waterItems.text = "Water Bottles: " + waterSupply;
+		flashlight.enabled = false;
 	}
 
 	void Update(){
@@ -126,6 +129,15 @@ public class PlayerStuff : MonoBehaviour {
 				curFood = maxFood;
 			}
 			foodItems.text = "Food Items: " + foodSupply;
+		}
+
+		if (Input.GetKeyDown(KeyCode.F)) {
+			if (flashlight.enabled == true) {
+				flashlight.enabled = false;
+			}
+			else {
+				flashlight.enabled = true;
+			}
 		}
 
 		if (Input.GetKeyDown(KeyCode.I)) {
