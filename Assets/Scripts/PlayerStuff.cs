@@ -40,7 +40,8 @@ public class PlayerStuff : MonoBehaviour {
 	
 	private GameObject camera;
 	private GameObject equipped;
-	private bool hasBaseballBat = false;
+	private bool hasBaseballBat = true;
+	private bool hasHandgun = false;
 	private int x = Screen.width / 2;
 	private int y = Screen.height / 2;
 	private int waterSupply = 0;
@@ -49,6 +50,7 @@ public class PlayerStuff : MonoBehaviour {
 	//GUI
 	private Rect healthRect;
 	private Texture2D healthTexture;
+	private GameObject[] respawns;
 
 	void Start(){
 		camera = GameObject.FindWithTag ("MainCamera");
@@ -69,6 +71,7 @@ public class PlayerStuff : MonoBehaviour {
 		//Other
 		flashlight.enabled = false;
 		map.SetActive (false);
+		playerSpawning ();
 	}
 
 	void Update(){
@@ -79,7 +82,7 @@ public class PlayerStuff : MonoBehaviour {
 		RaycastHit hit;
 		pickupText.text = "";
 		if (Physics.Raycast (Camera.main.ScreenPointToRay (new Vector3 (x, y)), out hit, 2)) {
-			if (hit.collider.tag == "Baseball Bat" && hasBaseballBat) {
+			if (hit.collider.tag == "Baseball Bat" && !hasBaseballBat) {
 				pickupText.text = "Press 'E' to pickup";
 				if(Input.GetKeyDown(KeyCode.E)){
 					Destroy(hit.collider.gameObject);
@@ -114,6 +117,17 @@ public class PlayerStuff : MonoBehaviour {
 				if (Input.GetKeyDown(KeyCode.E)) {
 					Destroy(hit.collider.gameObject);
 					handgun.SendMessage("AddMoreAmmo", 7);
+				}
+			}
+			else if (hit.collider.tag == "Handgun") {
+				pickupText.text = "Press 'E' to pickup";
+				if (Input.GetKeyDown(KeyCode.E) && !hasHandgun) {
+					Destroy(hit.collider.gameObject);
+					hasHandgun = true;
+				}
+				else {
+					Destroy(hit.collider.gameObject);
+					handgun.SendMessage("AddMoreAmmo", 14);
 				}
 			}
 		}
@@ -200,7 +214,7 @@ public class PlayerStuff : MonoBehaviour {
 			baseballBat.SetActive(true);
 			equipped = baseballBat;
 		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2) && handgun.activeSelf == false) {
+		else if (Input.GetKeyDown(KeyCode.Alpha2) && handgun.activeSelf == false && hasHandgun) {
 			equipped.SetActive(false);
 			handgun.SetActive(true);
 			equipped = handgun;
@@ -228,6 +242,13 @@ public class PlayerStuff : MonoBehaviour {
 		if (curHealth <= 0) {
 			Application.LoadLevel("deathScene");
 		}
+	}
+
+	void playerSpawning(){
+		respawns = GameObject.FindGameObjectsWithTag ("Respawn");
+		GameObject coords = respawns[Random.Range(0,respawns.Length-1)];
+		Transform spawnPoint = coords.gameObject.transform;
+		transform.position = spawnPoint.position;
 	}
 
 	void OnGUI(){

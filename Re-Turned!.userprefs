@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStuff.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerStuff.cs" Line="217" Column="2" />
+      <File FileName="Assets\Scripts\PlayerStuff.cs" Line="73" Column="1" />
+      <File FileName="Assets\Scripts\SpawnPickup.cs" Line="10" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

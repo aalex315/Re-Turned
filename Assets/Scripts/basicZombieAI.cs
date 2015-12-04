@@ -13,6 +13,7 @@ public class basicZombieAI : MonoBehaviour {
 	public float despawnDistance = 200.0f;
 	public AudioClip[] sounds;
 	public AudioSource audios;
+	public GameObject[] pickups;
 
 	private Transform target;
 	private Transform currentDest;
@@ -96,7 +97,12 @@ public class basicZombieAI : MonoBehaviour {
 			agent.enabled = false;
 			target.SendMessage("spawnOneEnemy");
 			StartCoroutine(DeathSound());
+			dropLoot();
 		}
+	}
+
+	void dropLoot(){
+	Instantiate (pickups[Random.Range(0, pickups.Length)], transform.position + new Vector3(0,1,0), Quaternion.identity);
 	}
 
 	float checkIfPlayerIsInFront(){

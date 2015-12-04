@@ -42,6 +42,7 @@ public class DayNightController : MonoBehaviour {
 		}
 		else {
 			RenderSettings.fogDensity = 0.0f;
+			RenderSettings.fog = false;
 		}
 	}
 	

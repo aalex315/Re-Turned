@@ -538,7 +538,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109848}
-  m_LocalRotation: {x: .721290588, y: .343902409, z: .242808297, w: .550013721}
+  m_LocalRotation: {x: .721290648, y: .343902439, z: .242808312, w: .550013781}
   m_LocalPosition: {x: -.229159117, y: 5.77419996e-08, z: -1.67638063e-08}
   m_LocalScale: {x: 1, y: .999999821, z: 1.00000024}
   m_Children:
@@ -803,6 +803,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 98fde2bd5e10540a39620c2ae8adb50e, type: 3}
   - {fileID: 8300000, guid: 6bb4519d95e5e45f1a0cf8600f54ba19, type: 3}
   audios: {fileID: 8290880}
+  pickups:
+  - {fileID: 123642, guid: c503178f55051aa40bf56a23ed71dd27, type: 2}
+  - {fileID: 104286, guid: 961175e96673945469685e050b6b2314, type: 2}
+  - {fileID: 120208, guid: 7e1e8d31a79ad5d4795638e510072ba6, type: 2}
+  - {fileID: 148778, guid: a358ad3add40e0645b114a9ed536068e, type: 2}
+  - {fileID: 195988, guid: 0574f42326c808743915935310fa87fe, type: 2}
+  - {fileID: 126076, guid: f32284fead5f04f46acf3683d9fb06bd, type: 2}
 --- !u!136 &13673568
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -904,6 +911,10 @@ Prefab:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: pickups.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: sounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 6bb4519d95e5e45f1a0cf8600f54ba19, type: 3}
@@ -955,6 +966,30 @@ Prefab:
       propertyPath: m_ReflectionProbeUsage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[0]
+      value: 
+      objectReference: {fileID: 123642, guid: c503178f55051aa40bf56a23ed71dd27, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[1]
+      value: 
+      objectReference: {fileID: 104286, guid: 961175e96673945469685e050b6b2314, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[2]
+      value: 
+      objectReference: {fileID: 120208, guid: 7e1e8d31a79ad5d4795638e510072ba6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[3]
+      value: 
+      objectReference: {fileID: 148778, guid: a358ad3add40e0645b114a9ed536068e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[4]
+      value: 
+      objectReference: {fileID: 195988, guid: 0574f42326c808743915935310fa87fe, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pickups.Array.data[5]
+      value: 
+      objectReference: {fileID: 126076, guid: f32284fead5f04f46acf3683d9fb06bd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153216}

@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\QuitGame.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
+     <Compile Include="Assets\Scripts\SpawnPickup.cs" />
      <Compile Include="Assets\Scripts\basicZombieAI.cs" />
      <Compile Include="Assets\Scripts\deathScreen.cs" />
      <Compile Include="Assets\Scripts\destroyAfterTime.cs" />

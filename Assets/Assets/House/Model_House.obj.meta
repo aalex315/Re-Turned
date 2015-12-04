@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 730ebfbfbf79a2642b50831eb88b61f4
+timeCreated: 1449217303
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Box01
+    100002: Box02
+    100004: Box03
+    100006: Box04
+    100008: //RootNode
+    100010: Plane03
+    100012: Wall_in
+    100014: Wall_in01
+    100016: Wall_in02
+    100018: Wall_OuT
+    100020: Wall_OuT01
+    100022: Wall_OuT02
+    100024: Wall_OuT03
+    100026: Wall_OuT04
+    100028: Wall_OuT05
+    100030: Wall_OuT06
+    100032: Wall_OuT07
+    100034: Wall_OuT08
+    400000: Box01
+    400002: Box02
+    400004: Box03
+    400006: Box04
+    400008: //RootNode
+    400010: Plane03
+    400012: Wall_in
+    400014: Wall_in01
+    400016: Wall_in02
+    400018: Wall_OuT
+    400020: Wall_OuT01
+    400022: Wall_OuT02
+    400024: Wall_OuT03
+    400026: Wall_OuT04
+    400028: Wall_OuT05
+    400030: Wall_OuT06
+    400032: Wall_OuT07
+    400034: Wall_OuT08
+    2300000: Box01
+    2300002: Box02
+    2300004: Box03
+    2300006: Box04
+    2300008: Plane03
+    2300010: Wall_in
+    2300012: Wall_in01
+    2300014: Wall_in02
+    2300016: Wall_OuT
+    2300018: Wall_OuT01
+    2300020: Wall_OuT02
+    2300022: Wall_OuT03
+    2300024: Wall_OuT04
+    2300026: Wall_OuT05
+    2300028: Wall_OuT06
+    2300030: Wall_OuT07
+    2300032: Wall_OuT08
+    3300000: Box01
+    3300002: Box02
+    3300004: Box03
+    3300006: Box04
+    3300008: Plane03
+    3300010: Wall_in
+    3300012: Wall_in01
+    3300014: Wall_in02
+    3300016: Wall_OuT
+    3300018: Wall_OuT01
+    3300020: Wall_OuT02
+    3300022: Wall_OuT03
+    3300024: Wall_OuT04
+    3300026: Wall_OuT05
+    3300028: Wall_OuT06
+    3300030: Wall_OuT07
+    3300032: Wall_OuT08
+    4300000: Box01
+    4300002: Box02
+    4300004: Box03
+    4300006: Box04
+    4300008: Plane03
+    4300010: Wall_in
+    4300012: Wall_in01
+    4300014: Wall_in02
+    4300016: Wall_OuT
+    4300018: Wall_OuT01
+    4300020: Wall_OuT02
+    4300022: Wall_OuT03
+    4300024: Wall_OuT04
+    4300026: Wall_OuT05
+    4300028: Wall_OuT06
+    4300030: Wall_OuT07
+    4300032: Wall_OuT08
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
