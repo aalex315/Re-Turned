@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour {
 
@@ -7,16 +8,12 @@ public class Shoot : MonoBehaviour {
 	public GameObject particle2;
 	public float fireRate = 0.5f;
 	public float soundRadius = 50.0f;
+	public Text ammoCounter;
 
 	private AudioSource gunshot;
 	private Animator anim;
 	private bool shooting = false;
 	private bool allowFire = true;
-	private GUIText ammoCounter;
-
-	void Start(){
-		ammoCounter = GameObject.Find ("AmmoCounter").GetComponent<GUIText>();
-	}
 
 	void Awake(){
 		gunshot = GetComponent<AudioSource> ();

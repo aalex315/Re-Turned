@@ -26,19 +26,28 @@ public class PlayerStuff : MonoBehaviour {
 	public Text pickupText;
 	public Image waterIcon;
 	public Image foodIcon;
-
-
+	//GUI
+	public GameObject stats;
+	public Text hungerText;
+	public Text waterText;
+	public Text foodItems;
+	public Text waterItems;
+	public Text ammo;
+	
+	private GameObject camera;
 	private GameObject equipped;
 	private bool hasBaseballBat = false;
 	private int x = Screen.width / 2;
 	private int y = Screen.height / 2;
 	private int waterSupply = 0;
 	private int foodSupply = 0;
+	private bool statsActive;
 	//GUI
 	private Rect healthRect;
 	private Texture2D healthTexture;
 
 	void Start(){
+		camera = GameObject.FindWithTag ("MainCamera");
 		baseballBat.SetActive (true);
 		equipped = baseballBat;
 		//GUI
@@ -48,9 +57,17 @@ public class PlayerStuff : MonoBehaviour {
 		Color.TryParseHexString ("#ce0000", out healthBarColor);
 		healthTexture.SetPixel (0,0, healthBarColor);
 		healthTexture.Apply ();
+		ammo.text = "";
+		stats.SetActive (false);
+		foodItems.text = "Food Items: " + foodSupply;
+		waterItems.text = "Water Bottles: " + waterSupply;
 	}
 
 	void Update(){
+
+		hungerText.text = "Hunger: " + curFood.ToString("F0");
+		waterText.text = "Dehydration: " + curWater.ToString("F0");
+
 		RaycastHit hit;
 		pickupText.text = "";
 		if (Physics.Raycast (Camera.main.ScreenPointToRay (new Vector3 (x, y)), out hit, 2)) {
@@ -66,6 +83,7 @@ public class PlayerStuff : MonoBehaviour {
 				if (Input.GetKeyDown(KeyCode.E)) {
 					Destroy(hit.collider.gameObject);
 					waterSupply++;
+					waterItems.text = "Water Bottles: " + waterSupply;
 				}
 			}
 			else if (hit.collider.tag == "Food") {
@@ -73,7 +91,14 @@ public class PlayerStuff : MonoBehaviour {
 				if (Input.GetKeyDown(KeyCode.E)) {
 					Destroy(hit.collider.gameObject);
 					foodSupply++;
-					Debug.Log (foodSupply);
+					foodItems.text = "Food Items: " + foodSupply;
+				}
+			}
+			else if (hit.collider.tag == "Grenade") {
+				pickupText.text = "Press 'E' to pickup";
+				if (Input.GetKeyDown(KeyCode.E)) {
+					Destroy(hit.collider.gameObject);
+					camera.SendMessage("AddGrenade");
 				}
 			}
 		}
@@ -85,12 +110,23 @@ public class PlayerStuff : MonoBehaviour {
 			if (curWater > maxWater) {
 				curWater = maxWater;
 			}
+			waterItems.text = "Water Bottles: " + waterSupply;
 		}
-		else if (Input.GetKeyDown(KeyCode.X)) {
+		else if (Input.GetKeyDown(KeyCode.X) && foodSupply > 0) {
 			curFood += foodItemsHeal;
 			foodSupply--;
 			if (curFood > maxFood) {
 				curFood = maxFood;
+			}
+			foodItems.text = "Food Items: " + foodSupply;
+		}
+
+		if (Input.GetKeyDown(KeyCode.I)) {
+			if (stats.activeSelf == true) {
+				stats.SetActive(false);
+			}
+			else {
+				stats.SetActive(true);
 			}
 		}
 
@@ -99,7 +135,6 @@ public class PlayerStuff : MonoBehaviour {
 		//Drain water & food meters
 		drain ();
 		//Display Food Warning
-		print (curFood);
 		displayFoodWaterIcon ();
 	}
 
