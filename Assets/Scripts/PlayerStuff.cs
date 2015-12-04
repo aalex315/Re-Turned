@@ -33,6 +33,7 @@ public class PlayerStuff : MonoBehaviour {
 	public Text foodItems;
 	public Text waterItems;
 	public Text ammo;
+	public GameObject pauseMenu;
 	//Others
 	public Light flashlight;
 	
@@ -63,6 +64,8 @@ public class PlayerStuff : MonoBehaviour {
 		stats.SetActive (false);
 		foodItems.text = "Food Items: " + foodSupply;
 		waterItems.text = "Water Bottles: " + waterSupply;
+		pauseMenu.SetActive (false);
+		//Other
 		flashlight.enabled = false;
 	}
 
@@ -130,8 +133,7 @@ public class PlayerStuff : MonoBehaviour {
 			}
 			foodItems.text = "Food Items: " + foodSupply;
 		}
-
-		if (Input.GetKeyDown(KeyCode.F)) {
+		else if (Input.GetKeyDown(KeyCode.F)) {
 			if (flashlight.enabled == true) {
 				flashlight.enabled = false;
 			}
@@ -139,13 +141,22 @@ public class PlayerStuff : MonoBehaviour {
 				flashlight.enabled = true;
 			}
 		}
-
-		if (Input.GetKeyDown(KeyCode.I)) {
+		else if (Input.GetKeyDown(KeyCode.I)) {
 			if (stats.activeSelf == true) {
 				stats.SetActive(false);
 			}
 			else {
 				stats.SetActive(true);
+			}
+		}
+		else if (Input.GetKeyDown(KeyCode.Escape)) {
+			if (Time.timeScale == 1) {
+				Time.timeScale = 0;
+				pauseMenu.SetActive(true);
+			}
+			else {
+				Time.timeScale = 1;
+				pauseMenu.SetActive(false);
 			}
 		}
 
@@ -170,6 +181,7 @@ public class PlayerStuff : MonoBehaviour {
 
 	public void GainDamage(float damage){
 		curHealth -= damage;
+		IfDead ();
 	}
 
 	void CheapAssInventory(){
@@ -199,6 +211,12 @@ public class PlayerStuff : MonoBehaviour {
 		} 
 		else if (foodWarning < curFood) {
 			foodIcon.enabled = false;
+		}
+	}
+
+	void IfDead(){
+		if (curHealth <= 0) {
+			Application.LoadLevel("deathScene");
 		}
 	}
 
