@@ -57,10 +57,10 @@ public class Shoot : MonoBehaviour {
 		gunshot.Play();
 		SendDetection ();
 		anim.SetBool("shooting", shooting);
-
 		allowFire = false;
 		yield return new WaitForSeconds (fireRate);
 		shooting = false;
+		anim.SetBool ("shooting", shooting);
 		allowFire = true;
 	}
 
@@ -79,6 +79,7 @@ public class Shoot : MonoBehaviour {
 		UpdateText ();
 		allowFire = true;
 	}
+
 
 	void SendDetection(){
 		Collider[] cols = Physics.OverlapSphere (transform.position, soundRadius);
