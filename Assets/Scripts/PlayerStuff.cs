@@ -34,6 +34,7 @@ public class PlayerStuff : MonoBehaviour {
 	public Text waterItems;
 	public Text ammo;
 	public GameObject pauseMenu;
+	public GameObject map;
 	//Others
 	public Light flashlight;
 	
@@ -67,6 +68,7 @@ public class PlayerStuff : MonoBehaviour {
 		pauseMenu.SetActive (false);
 		//Other
 		flashlight.enabled = false;
+		map.SetActive (false);
 	}
 
 	void Update(){
@@ -157,6 +159,14 @@ public class PlayerStuff : MonoBehaviour {
 			else {
 				Time.timeScale = 1;
 				pauseMenu.SetActive(false);
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.M)){
+			if (map.activeSelf == true) {
+				map.SetActive(false);
+			}
+			else {
+				map.SetActive(true);
 			}
 		}
 
